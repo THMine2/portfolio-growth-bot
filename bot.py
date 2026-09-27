@@ -36,4 +36,6 @@ async def hallo(ctx):
     await ctx.send(f'Hallo {ctx.author.name}! Ich funktioniere!')
 
 # FÜGE HIER WIEDER DEINEN GEHEIMEN TOKEN EIN
-bot.run('MTU1Mzc4OTcyOTA4OTAwMzU0MA.GA3En-.Vz2KMK3CrHgqbeDp56j11Ee0HSYIY7UfJcDUqk')
+import os
+bot.run(os.environ.get('DISCORD_TOKEN'))
+
