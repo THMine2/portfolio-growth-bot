@@ -1,3 +1,7 @@
+from threading import Thread
+from http.server import HTTPServer, BaseHTTPRequestHandler
+Thread(target=lambda: HTTPServer(('0.0.0.0', 10000), type('H', (BaseHTTPRequestHandler,), {'do_GET': lambda s: s.send_response(200) or s.end_headers()})).serve_forever(), daemon=True).start()
+
 import discord
 from discord.ext import commands
 
