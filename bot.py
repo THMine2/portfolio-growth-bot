@@ -50,7 +50,6 @@ class RoleView(discord.ui.View):
             await interaction.user.add_roles(role)
             await interaction.response.send_message(f"Du hast die Rolle **{role.name}** erhalten!", ephemeral=True)
 
-
 @bot.event
 async def on_ready():
     # Registriert die Buttons beim Bot-Start, damit sie auch nach einem Server-Neustart direkt wieder reagieren
@@ -73,11 +72,10 @@ async def on_member_join(member):
     else:
         print("Fehler: Die Rollen-ID konnte auf dem Server nicht gefunden werden.")
 
-    # --- 2. DEINE NEUE BEGRÜSSUNGS-NACHRICHT ---
+    # --- 2. DEINE AKTUALISIERTE BEGRÜSSUNGS-NACHRICHT ---
     willkommens_text = (
         f"Welcome {member.mention} to Portfolio Growth\n\n"
-        f"Check out <#1548319472081969243> to get to know the community, "
-        f"also feel free to send port to <#1548766513517830294> for others to look at and give their thoughts and opinions🤔\n\n"
+        f"Check out <#1553797862385651872> to level up!\n\n"
         f"Disclaimer: This is not financial advice\n"
         f"🚫 Please be aware of scammers!"
     )
@@ -86,7 +84,6 @@ async def on_member_join(member):
     if channel:
         await channel.send(willkommens_text)
         print(f"Erfolgreich Begruessung fuer {member.name} gepostet.")
-
 
 # --- ADMIN-BEFEHL ZUM SENDEN DER BUTTON-NACHRICHT ---
 @bot.command()
@@ -108,11 +105,9 @@ async def setup_ping_roles(ctx):
     # Löscht deine "!setup_ping_roles" Nachricht, damit der Kanal sauber bleibt
     await ctx.message.delete()
 
-
 @bot.command()
 async def hallo(ctx):
     await ctx.send(f'Hallo {ctx.author.name}! Ich funktioniere!')
 
 # Holt sich den geheimen Token sicher aus den Render-Einstellungen
 bot.run(os.environ.get('DISCORD_TOKEN'))
-
